@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>622</width>
+    <height>344</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Запускатор</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>602</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pbAdmin">
+       <property name="text">
+        <string>Администратор</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/AdmStat.ico</normaloff>:/icons/Resource/AdmStat.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="pbLAdmin">
+       <property name="text">
+        <string>Льготные рецепты (Админ)</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/LgAdmin.ico</normaloff>:/icons/Resource/LgAdmin.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="pbLgota">
+       <property name="text">
+        <string>Льготные рецепты</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/LgRecept.ico</normaloff>:/icons/Resource/LgRecept.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="pbTalon">
+       <property name="text">
+        <string>Талон Амбулаторного пациента</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/Talon.ico</normaloff>:/icons/Resource/Talon.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="pbEcon">
+       <property name="text">
+        <string>Экономист</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/EconMCT.ico</normaloff>:/icons/Resource/EconMCT.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="pbStMed">
+       <property name="text">
+        <string>Старшая медсестра</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/MainSestStacMCT.ico</normaloff>:/icons/Resource/MainSestStacMCT.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPushButton" name="pbPrPokoy">
+       <property name="text">
+        <string>Приемный покой</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/PokoyMCT.ico</normaloff>:/icons/Resource/PokoyMCT.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="pbMedStat">
+       <property name="text">
+        <string>Медицинский статистик</string>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/Resource/StatStacMct.ico</normaloff>:/icons/Resource/StatStacMct.ico</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="4" column="2">
+      <widget class="QPushButton" name="pbSettings">
+       <property name="text">
+        <string>Настройка путей</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="3">
+      <widget class="QListView" name="listView"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pbAdmin</tabstop>
+  <tabstop>pbTalon</tabstop>
+  <tabstop>pbLgota</tabstop>
+  <tabstop>pbLAdmin</tabstop>
+  <tabstop>pbPrPokoy</tabstop>
+  <tabstop>pbMedStat</tabstop>
+  <tabstop>pbEcon</tabstop>
+  <tabstop>pbStMed</tabstop>
+ </tabstops>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

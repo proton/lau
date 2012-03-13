@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>Resource/AdmStat.ico</file>
+        <file>Resource/EconMCT.ico</file>
+        <file>Resource/LgAdmin.ico</file>
+        <file>Resource/LgRecept.ico</file>
+        <file>Resource/MainSestStacMCT.ico</file>
+        <file>Resource/PokoyMCT.ico</file>
+        <file>Resource/StatStacMct.ico</file>
+        <file>Resource/Talon.ico</file>
+    </qresource>
+</RCC>
