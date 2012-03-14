@@ -8,9 +8,10 @@ public:
     DAO();
     ~DAO();
    void AddToBase(QString title, QString source, QString base);
-   void deleteFromDB(int id);
+   QSqlTableModel getModel();
 private:
    QSqlDatabase db;
+   QSqlTableModel *model;
 
 };
 

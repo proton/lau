@@ -23,11 +23,13 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Settings *ui;
     DAO dao;
     QSqlDatabase db;
-    QSqlTableModel *model;
+
 };
 
 #endif // SETTINGS_H

@@ -4,6 +4,7 @@
 #include "QDebug"
 #include "QtSql"
 #include "dao.h"
+#include "QFileDialog"
 Settings::Settings(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Settings)
@@ -19,22 +20,9 @@ Settings::~Settings()
 }
 void Settings::setModel()
 {
-    if(QSqlDatabase::contains(QSqlDatabase::defaultConnection)) {
-        db = QSqlDatabase::database();
-    } else {
-        db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("d:\\db.db3");
-    }
-
-    model = new QSqlTableModel();
-    model->setTable("databases");
-    model->setEditStrategy(QSqlTableModel::OnFieldChange);
-    model->select();
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Заголовок"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Источник"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("База"));
-    ui->tableView->setModel(model);
+    dao = DAO();
+    QSqlTableModel model = new QSqlTableModel();
+    ui->tableView->setModel(&model);
 }
 
 void Settings::on_pushButton_clicked()
@@ -50,6 +38,27 @@ void Settings::on_pushButton_clicked()
 void Settings::on_pushButton_2_clicked()
 {
     qDebug()<<ui->tableView->currentIndex();
-    model->removeRow(ui->tableView->selectionModel()->currentIndex().row());
+//    model->removeRow(ui->tableView->selectionModel()->currentIndex().row());
     setModel();
+}
+
+void Settings::on_pushButton_3_clicked()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+        "C:\\",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    if(QSqlDatabase::contains(QSqlDatabase::defaultConnection)) {
+        db = QSqlDatabase::database();
+    } else {
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("d:\\db.db3");
+    }
+    QSqlQuery query;
+    qDebug()<<dir;
+    bool result = query.exec(QString("UPDATE settings SET VALUE = '%1' WHERE setting = 'path';").arg(dir));
+    if (result)
+    {
+        qDebug()<<query.lastQuery();
+    }else{
+        qDebug()<<query.lastError();
+    }
 }

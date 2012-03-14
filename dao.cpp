@@ -40,29 +40,25 @@ void DAO::AddToBase(QString title, QString source, QString base)
         qDebug() << db.lastError().text();
     }
 }
-void DAO::deleteFromDB(int id)
+
+QSqlTableModel DAO::getModel()
 {
-    if (db.open())
-    {
-    QSqlQuery a_query;
-    QString str_insert = "DELETE FROM databases "
-            "WHERE id=%1;";
-    QString str = str_insert.arg(id+1);
-        bool b = a_query.exec(str);
-    qDebug()<<a_query.lastQuery();
-    if (!b)
-    {
-        qDebug() << "Error";
-    }
-    else
-    {
-        qDebug()<<"Success";
+    if(QSqlDatabase::contains(QSqlDatabase::defaultConnection)) {
+        db = QSqlDatabase::database();
+    } else {
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("d:\\db.db3");
     }
 
+    model = new QSqlTableModel();
+    model->setTable("databases");
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
+    model->select();
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Заголовок"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Источник"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("База"));
+    return model;
 }
-    if (!db.open())
-    {
-       qDebug() << db.lastError().text();
-    }
-}
+
 
