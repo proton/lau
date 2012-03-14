@@ -41,7 +41,7 @@ void DAO::AddToBase(QString title, QString source, QString base)
     }
 }
 
-QSqlTableModel DAO::getModel()
+QSqlTableModel* DAO::getModel()
 {
     if(QSqlDatabase::contains(QSqlDatabase::defaultConnection)) {
         db = QSqlDatabase::database();

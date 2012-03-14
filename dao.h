@@ -8,7 +8,7 @@ public:
     DAO();
     ~DAO();
    void AddToBase(QString title, QString source, QString base);
-   QSqlTableModel getModel();
+   QSqlTableModel* getModel();
 private:
    QSqlDatabase db;
    QSqlTableModel *model;

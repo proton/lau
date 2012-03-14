@@ -21,8 +21,8 @@ Settings::~Settings()
 void Settings::setModel()
 {
     dao = DAO();
-    QSqlTableModel model = new QSqlTableModel();
-    ui->tableView->setModel(&model);
+	QSqlTableModel* model = new QSqlTableModel();
+	ui->tableView->setModel(model);
 }
 
 void Settings::on_pushButton_clicked()
