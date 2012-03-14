@@ -26,11 +26,14 @@ void Settings::setModel()
         db.setDatabaseName("d:\\db.db3");
     }
 
-    QSqlQueryModel *model = new QSqlQueryModel();
-    model->setHeaderData(0, Qt::Horizontal, QObject::trUtf8("Заголовок"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::trUtf8("Источник"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::trUtf8("База"));
-    model->setQuery("SELECT title,dbsource,dbname FROM databases");
+    model = new QSqlTableModel();
+    model->setTable("databases");
+    model->setEditStrategy(QSqlTableModel::OnFieldChange);
+    model->select();
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Заголовок"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Источник"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("База"));
     ui->tableView->setModel(model);
 }
 
@@ -46,5 +49,7 @@ void Settings::on_pushButton_clicked()
 
 void Settings::on_pushButton_2_clicked()
 {
-
+    qDebug()<<ui->tableView->currentIndex();
+    model->removeRow(ui->tableView->selectionModel()->currentIndex().row());
+    setModel();
 }

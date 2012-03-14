@@ -27,6 +27,7 @@ private:
     Ui::Settings *ui;
     DAO dao;
     QSqlDatabase db;
+    QSqlTableModel *model;
 };
 
 #endif // SETTINGS_H

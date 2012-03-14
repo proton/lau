@@ -8,7 +8,7 @@ public:
     DAO();
     ~DAO();
    void AddToBase(QString title, QString source, QString base);
-   void deleteFromDB(QString title);
+   void deleteFromDB(int id);
 private:
    QSqlDatabase db;
 

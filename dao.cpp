@@ -40,14 +40,16 @@ void DAO::AddToBase(QString title, QString source, QString base)
         qDebug() << db.lastError().text();
     }
 }
-void DAO::deleteFromDB(QString title)
+void DAO::deleteFromDB(int id)
 {
     if (db.open())
     {
     QSqlQuery a_query;
-    a_query.prepare("DELETE FROM databases WHERE title=:title;");
-    a_query.bindValue(":title",title);
-    bool b = a_query.exec();
+    QString str_insert = "DELETE FROM databases "
+            "WHERE id=%1;";
+    QString str = str_insert.arg(id+1);
+        bool b = a_query.exec(str);
+    qDebug()<<a_query.lastQuery();
     if (!b)
     {
         qDebug() << "Error";

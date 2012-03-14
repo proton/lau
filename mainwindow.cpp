@@ -35,8 +35,21 @@ void MainWindow::setModel()
     model->setQuery("SELECT title FROM databases");
 
     ui->listView->setModel(model);
+
     }else{
         qDebug()<<QObject::trUtf8("Ошибка");
+    }
+    QSqlQuery query;
+
+    if (query.exec("SELECT * FROM settings WHERE Setting = 'path';"))
+    {
+         QSqlRecord rec = query.record();
+        while (query.next())
+        {
+        ui->label_path->setText(query.value(rec.indexOf("VALUE")).toString());
+        }
+    }else{
+        ui->label_path->setText(QObject::tr("Невозможно прочитать путь к файлам"));
     }
 }
 
@@ -100,5 +113,8 @@ void MainWindow::on_pbStMed_clicked()
 void MainWindow::on_pbSettings_clicked()
 {
     Settings s;
-    s.exec();
+    if (s.exec() == QDialog::Rejected)
+    {
+        setModel();
+    }
 }
